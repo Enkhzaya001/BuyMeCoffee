@@ -27,10 +27,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@prisma/client@^6.11.0":
-  version "6.11.0"
-  resolved "https://registry.npmjs.org/@prisma/client/-/client-6.11.0.tgz"
-  integrity sha512-K9TkKepOYvCOg3qCuKz7ZHf6rf58BFKi08plKjU4qVv9y7/UxO6tLz7PlWcgODUZKURLPmRHjHERffIx/8az4w==
+"@prisma/client@^6.11.1":
+  version "6.11.1"
+  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-6.11.1.tgz#ef97454d8b0bb192b26ec4111def83ddee4615e3"
+  integrity sha512-5CLFh8QP6KxRm83pJ84jaVCeSVPQr8k0L2SEtOJHwdkS57/VQDcI/wQpGmdyOZi+D9gdNabdo8tj1Uk+w+upsQ==
 
 "@prisma/config@6.11.0":
   version "6.11.0"
@@ -163,6 +163,13 @@
   version "24.0.8"
   resolved "https://registry.npmjs.org/@types/node/-/node-24.0.8.tgz"
   integrity sha512-WytNrFSgWO/esSH9NbpWUfTMGQwCGIKfCmNlmFDNiI5gGhgMmEA+V1AEvKLeBNvvtBnailJtkrEa2OIISwrVAA==
+  dependencies:
+    undici-types "~7.8.0"
+
+"@types/node@^24.0.13":
+  version "24.0.13"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-24.0.13.tgz#93ed8c05c7b188a59760be0ce2ee3fa7ad0f83f6"
+  integrity sha512-Qm9OYVOFHFYg3wJoTSrz80hoec5Lia/dPp84do3X7dZvLikQvM1YpmvTBEdIr/e+U8HTkFjLHLnl78K/qjf+jQ==
   dependencies:
     undici-types "~7.8.0"
 
