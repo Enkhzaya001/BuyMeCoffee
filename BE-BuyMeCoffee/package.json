@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-  "build": "next build",
+    "build": "tsc",
     "start": "nodemon",
     "prisma:generate": "yarn prisma generate",
     "prisma:migrate": "yarn prisma migrate dev --name init"
