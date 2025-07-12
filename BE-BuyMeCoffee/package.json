@@ -2,12 +2,13 @@
   "name": "be-buymecoffee",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "build": "tsc",
-    "start": "nodemon",
-    "prisma:generate": "yarn prisma generate",
-    "prisma:migrate": "yarn prisma migrate dev --name init"
-  },
+ "scripts": {
+  "build": "tsc",
+  "start": "node dist/index.js",      
+  "dev": "nodemon src/index.ts",
+  "prisma:generate": "prisma generate",
+  "prisma:migrate": "prisma migrate dev --name init"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",

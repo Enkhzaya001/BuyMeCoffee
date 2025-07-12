@@ -20,7 +20,11 @@ app.use(ProfilerRouter);
 app.use(paymentRouter);
 app.use(donationRouter);
 
-app.listen(8000, () => console.log("Server running"));
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, () => {
+  console.log(`✅ Server running on port ${PORT}`);
+});
 
 // import express, { Request, Response } from "express";
 // import dotenv from "dotenv";
