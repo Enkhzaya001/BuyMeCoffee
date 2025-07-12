@@ -1,0 +1,36 @@
+{
+  "name": "be-buymecoffee",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+  "build": "next build",
+    "start": "nodemon",
+    "prisma:generate": "yarn prisma generate",
+    "prisma:migrate": "yarn prisma migrate dev --name init"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.11.0",
+    "@types/express": "^5.0.3",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.0.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "nodemon": "^3.1.10",
+    "prisma": "^6.11.0",
+    "qrcode": "^1.5.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "zod": "^3.25.72"
+  },
+  "description": "",
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/qrcode": "^1.5.5"
+  }
+}
