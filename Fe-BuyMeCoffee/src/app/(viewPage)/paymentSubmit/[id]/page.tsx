@@ -13,9 +13,7 @@ export default function DonationSuccess() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get(
-          `https://buymecoffee-u98u.onrender.com/getProfile/${id}`
-        );
+        const res = await axios.get(`http://localhost:8000/getProfile/${id}`);
         console.log(res, "resss");
         setProfile(res.data.getUserPro);
       } catch (err: any) {

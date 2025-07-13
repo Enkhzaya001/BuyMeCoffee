@@ -100,7 +100,7 @@ export const Pro = ({ name, social, image, about }: PropsType) => {
       const token = localStorage.getItem("token");
 
       const res = await axios.post(
-        "https://buymecoffee-u98u.onrender.com/profile",
+        "http://localhost:8000/profile",
         {
           name: values.name,
           about: values.about,

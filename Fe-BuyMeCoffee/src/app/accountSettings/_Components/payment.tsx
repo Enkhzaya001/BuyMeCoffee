@@ -67,9 +67,7 @@ export default function AccountPaymentForm() {
   useEffect(() => {
     const fetchPayment = async () => {
       try {
-        const res = await axios.get(
-          "https://buymecoffee-u98u.onrender.com/getBankCart"
-        );
+        const res = await axios.get("http://localhost:8000/getBankCart");
         console.log(res, "payment");
         setGetPaymentInfo(res.data);
       } catch (err: any) {
@@ -104,7 +102,7 @@ export default function AccountPaymentForm() {
       const token = localStorage.getItem("token");
 
       const res = await axios.post(
-        "https://buymecoffee-u98u.onrender.com/bankcard",
+        "http://localhost:8000/bankcard",
         {
           country: values.country,
           firstName: values.firstName,

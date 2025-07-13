@@ -51,14 +51,11 @@ export const SignUpStep2 = ({ username }: StepProps) => {
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     setLoading(true);
     try {
-      const res = await axios.post(
-        "https://buymecoffee-u98u.onrender.com/signup",
-        {
-          username: username,
-          email: values.email,
-          password: values.password,
-        }
-      );
+      const res = await axios.post("http://localhost:8000/signup", {
+        username: username,
+        email: values.email,
+        password: values.password,
+      });
       toast.success("Амжилттай нэвтэрлээ!");
       router.push("/login");
     } catch (error: any) {

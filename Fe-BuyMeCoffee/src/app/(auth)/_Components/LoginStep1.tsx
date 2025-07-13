@@ -50,14 +50,11 @@ export const LoginStep = () => {
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     setLoading(true);
     try {
-      const res = await axios.post(
-        "https://buymecoffee-u98u.onrender.com/login",
-        {
-          email: values.email,
-          password: values.password,
-          image: "image",
-        }
-      );
+      const res = await axios.post("http://localhost:8000/login", {
+        email: values.email,
+        password: values.password,
+        image: "image",
+      });
       const data = res.data;
       // alert("Амжилттай нэвтэрлээ!");
 
