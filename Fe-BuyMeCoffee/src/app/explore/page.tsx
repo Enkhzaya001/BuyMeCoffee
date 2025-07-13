@@ -18,11 +18,14 @@ const Explore = () => {
     const fetchProfile = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await axios.get("http://localhost:8000/getAllProfile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const res = await axios.get(
+          "https://buymecoffee-u98u.onrender.com/getAllProfile",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         console.log(res, "resss");
         setAllProfile(res.data.getUserPro);
       } catch (err: any) {
@@ -41,7 +44,7 @@ const Explore = () => {
     const fetchProfile = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/getProfile/${user?.userId}`
+          `https://buymecoffee-u98u.onrender.com/getProfile/${user?.userId}`
         );
         console.log(res, "resss");
         setLoginProfile(res.data.getUserPro);

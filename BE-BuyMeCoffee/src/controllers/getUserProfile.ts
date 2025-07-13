@@ -9,8 +9,9 @@ export const getUserPro = async (
   // console.log("Decoded userId:", userId);
 
   const { id } = req.params;
+  console.log("✅ GET /getProfile дотор орж ирлээ");
   try {
-    const getUserPro = await prisma.profile.findUnique({
+    const getUserPro = await prisma.profile.findFirst({
       where: { userId: Number(id) },
     });
 

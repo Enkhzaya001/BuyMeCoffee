@@ -12,12 +12,12 @@ model User {
   email             String     @unique
   password          String
   username          String     @unique
-  receivedDonations Donation[] @relation("ReceivedDonations")
   createdAt         DateTime   @default(now())
   updatedAt         DateTime   @updatedAt
-  profile           Profile?
   bankCard          BankCard?
   donatedDonations  Donation[] @relation("DonatedDonations")
+  receivedDonations Donation[] @relation("ReceivedDonations")
+  profile           Profile?
 }
 
 model Profile {
@@ -28,10 +28,10 @@ model Profile {
   socialMediaURL  String
   backgroundImage String?
   successMessage  String?
-  user            User     @relation(fields: [userId], references: [id])
   userId          Int      @unique
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+  user            User     @relation(fields: [userId], references: [id])
 }
 
 model BankCard {
@@ -41,10 +41,10 @@ model BankCard {
   lastName   String
   cardNumber String
   expiryDate DateTime
-  user       User     @relation(fields: [userId], references: [id])
   userId     Int      @unique
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+  user       User     @relation(fields: [userId], references: [id])
 }
 
 model Donation {
@@ -52,10 +52,10 @@ model Donation {
   amount                  Int
   specialMessage          String?
   socialURLOrBuyMeACoffee String?
-  donor                   User     @relation("DonatedDonations", fields: [donorId], references: [id])
   donorId                 Int
-  recipient               User     @relation("ReceivedDonations", fields: [recipientId], references: [id])
   recipientId             Int
   createdAt               DateTime @default(now())
   updatedAt               DateTime @updatedAt
+  donor                   User     @relation("DonatedDonations", fields: [donorId], references: [id])
+  recipient               User     @relation("ReceivedDonations", fields: [recipientId], references: [id])
 }

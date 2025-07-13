@@ -69,7 +69,7 @@ export default function PaymentForm() {
       const token = localStorage.getItem("token");
 
       const res = await axios.post(
-        "http://localhost:8000/bankcard",
+        "https://buymecoffee-u98u.onrender.com/bankcard",
         {
           country: values.country,
           firstName: values.firstName,

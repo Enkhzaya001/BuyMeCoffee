@@ -20,7 +20,10 @@ app.use(auth_1.UserRouter);
 app.use(profile_router_1.ProfilerRouter);
 app.use(payment_router_1.paymentRouter);
 app.use(donation_router_1.donationRouter);
-app.listen(8000, () => console.log("Server running"));
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => {
+    console.log(`✅ Server running on port ${PORT}`);
+});
 // import express, { Request, Response } from "express";
 // import dotenv from "dotenv";
 // import { prisma } from "./utils/prisma";

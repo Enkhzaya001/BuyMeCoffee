@@ -33,9 +33,12 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   console.log(user?.userId, "user");
   const tokenChecker = async (token: string) => {
     try {
-      const response = await axios.post("http://localhost:8000/verify", {
-        token: token,
-      });
+      const response = await axios.post(
+        "https://buymecoffee-u98u.onrender.com/verify",
+        {
+          token: token,
+        }
+      );
       console.log(response.data.destructToken.userId, "sdfghjkl");
 
       setUser({
@@ -59,7 +62,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   //   const fetchProfile = async () => {
   //     const token = localStorage.getItem("token");
   //     try {
-  //       const res = await axios.get("http://localhost:8000/getProfile", {
+  //       const res = await axios.get("https://buymecoffee-u98u.onrender.com/getProfile", {
   //         headers: {
   //           Authorization: `Bearer ${token}`,
   //         },

@@ -22,8 +22,10 @@ app.use(donationRouter);
 
 const PORT = process.env.PORT || 8000;
 
+console.log(process.env.DATABASE_URL, "dataaa");
+
 app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
 
 // import express, { Request, Response } from "express";
