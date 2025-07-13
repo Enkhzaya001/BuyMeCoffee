@@ -95,7 +95,7 @@ export const Profile = ({ onNext }: { onNext: () => void }) => {
       const token = localStorage.getItem("token");
 
       const res = await axios.post(
-        "http://localhost:8000/profile",
+        "https://buymecoffee-u98u.onrender.com/profile",
         {
           name: values.name,
           about: values.about,

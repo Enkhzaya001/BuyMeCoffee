@@ -43,7 +43,7 @@ const ViewPage = () => {
     const fetchProfile = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/getProfile/${user?.userId}`
+          `https://buymecoffee-u98u.onrender.com/getProfile/${user?.userId}`
         );
         console.log(res, "resss");
         setLoginProfile(res.data.getUserPro);
@@ -62,7 +62,9 @@ const ViewPage = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/getProfile/${id}`);
+        const res = await axios.get(
+          `https://buymecoffee-u98u.onrender.com/getProfile/${id}`
+        );
         console.log(res, "resss");
         setProfile(res.data.getUserPro);
       } catch (err: any) {
@@ -78,12 +80,15 @@ const ViewPage = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post(`http://localhost:8000/donation/${id}`, {
-        amount: selectedTab,
-        specialMessage: value,
-        socialURLOrBuyMeACoffee: url,
-        donorId: user?.userId,
-      });
+      const res = await axios.post(
+        `https://buymecoffee-u98u.onrender.com/donation/${id}`,
+        {
+          amount: selectedTab,
+          specialMessage: value,
+          socialURLOrBuyMeACoffee: url,
+          donorId: user?.userId,
+        }
+      );
       setUrl(loginProfile.socialMediaURL);
       setQr(res.data.qr);
     } catch (error: any) {
@@ -102,7 +107,9 @@ const ViewPage = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/getDonation/${id}`);
+        const res = await axios.get(
+          `https://buymecoffee-u98u.onrender.com/getDonation/${id}`
+        );
         setGetDonation(res.data.getDonation);
       } catch (err: any) {
         console.log(err?.response?.data?.message || "Failed to fetch profile");

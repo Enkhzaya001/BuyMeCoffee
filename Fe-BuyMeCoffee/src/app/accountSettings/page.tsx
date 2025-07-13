@@ -21,7 +21,7 @@ const AccountSettings = () => {
     const fetchProfile = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/getProfile/${user?.userId}`
+          `https://buymecoffee-u98u.onrender.com/getProfile/${user?.userId}`
         );
         console.log(res, "resss");
         setProfile(res.data.getUserPro);
