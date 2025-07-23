@@ -100,7 +100,7 @@ export const AccountProfile = ({ name, social, image, about }: PropsType) => {
       const token = localStorage.getItem("token");
 
       const res = await axios.post(
-        "https://buymecoffee-ei33.onrender.com/profile",
+        "https://buymecoffee-31me.onrender.com/profile",
         {
           name: values.name,
           about: values.about,

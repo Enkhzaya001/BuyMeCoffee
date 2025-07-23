@@ -19,7 +19,7 @@ const Explore = () => {
       const token = localStorage.getItem("token");
       try {
         const res = await axios.get(
-          "https://buymecoffee-ei33.onrender.com/getAllProfile",
+          "https://buymecoffee-31me.onrender.com/getAllProfile",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -44,7 +44,7 @@ const Explore = () => {
     const fetchProfile = async () => {
       try {
         const res = await axios.get(
-          `https://buymecoffee-ei33.onrender.com/getProfile/${user?.userId}`
+          `https://buymecoffee-31me.onrender.com/getProfile/${user?.userId}`
         );
         console.log(res, "resss");
         setLoginProfile(res.data.getUserPro);

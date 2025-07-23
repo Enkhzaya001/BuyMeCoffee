@@ -15,7 +15,7 @@ export const Menu = () => {
     const fetchProfile = async () => {
       try {
         const res = await axios.get(
-          "https://buymecoffee-ei33.onrender.com/getProfile/" + user?.userId
+          "https://buymecoffee-31me.onrender.com/getProfile/" + user?.userId
         );
         console.log(res, "resss");
         setLoginProfile(res.data.getUserPro);

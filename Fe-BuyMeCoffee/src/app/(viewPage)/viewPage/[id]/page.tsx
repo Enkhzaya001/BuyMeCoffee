@@ -43,7 +43,7 @@ const ViewPage = () => {
     const fetchProfile = async () => {
       try {
         const res = await axios.get(
-          `https://buymecoffee-ei33.onrender.com/getProfile/${user?.userId}`
+          `https://buymecoffee-31me.onrender.com/getProfile/${user?.userId}`
         );
         console.log(res, "resss");
         setLoginProfile(res.data.getUserPro);
@@ -63,7 +63,7 @@ const ViewPage = () => {
     const fetchProfile = async () => {
       try {
         const res = await axios.get(
-          `https://buymecoffee-ei33.onrender.com/getProfile/${id}`
+          `https://buymecoffee-31me.onrender.com/getProfile/${id}`
         );
         console.log(res, "resss");
         setProfile(res.data.getUserPro);
@@ -81,7 +81,7 @@ const ViewPage = () => {
 
     try {
       const res = await axios.post(
-        `https://buymecoffee-ei33.onrender.com/donation/${id}`,
+        `https://buymecoffee-31me.onrender.com/donation/${id}`,
         {
           amount: selectedTab,
           specialMessage: value,
@@ -108,7 +108,7 @@ const ViewPage = () => {
     const fetchProfile = async () => {
       try {
         const res = await axios.get(
-          `https://buymecoffee-ei33.onrender.com/getDonation/${id}`
+          `https://buymecoffee-31me.onrender.com/getDonation/${id}`
         );
         setGetDonation(res.data.getDonation);
       } catch (err: any) {
