@@ -52,7 +52,7 @@ export const SignUpStep2 = ({ username }: StepProps) => {
     setLoading(true);
     try {
       const res = await axios.post(
-        "https://buymecoffee-u98u.onrender.com/signup",
+        "https://buymecoffee-ei33.onrender.com/signup",
         {
           username: username,
           email: values.email,

@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   const tokenChecker = async (token: string) => {
     try {
       const response = await axios.post(
-        "https://buymecoffee-u98u.onrender.com/verify",
+        "https://buymecoffee-ei33.onrender.com/verify",
         {
           token: token,
         }
@@ -62,7 +62,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   //   const fetchProfile = async () => {
   //     const token = localStorage.getItem("token");
   //     try {
-  //       const res = await axios.get("https://buymecoffee-u98u.onrender.com/getProfile", {
+  //       const res = await axios.get("https://buymecoffee-ei33.onrender.com/getProfile", {
   //         headers: {
   //           Authorization: `Bearer ${token}`,
   //         },

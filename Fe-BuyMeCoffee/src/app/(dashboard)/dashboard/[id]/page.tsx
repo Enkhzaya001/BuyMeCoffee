@@ -19,7 +19,7 @@ const Dashboard = () => {
     const fetchProfile = async () => {
       try {
         const res = await axios.get(
-          `https://buymecoffee-u98u.onrender.com/getProfile/${user?.userId}`
+          `https://buymecoffee-ei33.onrender.com/getProfile/${user?.userId}`
         );
         console.log(res, "resss");
         setProfile(res.data.getUserPro);
@@ -38,7 +38,7 @@ const Dashboard = () => {
     const fetchProfile = async () => {
       try {
         const res = await axios.get(
-          `https://buymecoffee-u98u.onrender.com/getDonation/${id}`
+          `https://buymecoffee-ei33.onrender.com/getDonation/${id}`
         );
         setGetDonation(res.data.getDonation);
       } catch (err: any) {

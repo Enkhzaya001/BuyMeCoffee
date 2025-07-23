@@ -12,7 +12,7 @@ export default function Home() {
       <div className="flex justify-center items-center min-h-screen flex-1/2 bg-gradient-to-br from-amber-200 to-yellow-100 px-4">
         <div className="bg-white border border-amber-300 shadow-lg rounded-xl p-8 w-full max-w-md text-center space-y-6">
           <h1 className="text-xl font-bold text-gray-800">
-            Welcome to{" "}
+            Welcome to
             <span className="text-amber-500">My Buy Me a Coffee Page</span>
             ☕🔥😎
           </h1>
