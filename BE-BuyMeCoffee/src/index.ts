@@ -20,7 +20,7 @@ app.use(ProfilerRouter);
 app.use(paymentRouter);
 app.use(donationRouter);
 
-const PORT = process.env.PORT || 8000;
+const PORT = 8000;
 
 console.log(process.env.DATABASE_URL, "dataaa");
 
