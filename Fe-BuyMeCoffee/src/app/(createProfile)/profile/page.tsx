@@ -11,8 +11,6 @@ const CreateProfile = () => {
     "profile"
   );
 
-  const { user } = useAuth();
-
   const handleProfileSubmit = () => {
     setStep("loading");
 
