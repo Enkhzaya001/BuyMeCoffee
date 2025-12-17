@@ -67,7 +67,7 @@ export const LoginStep = () => {
       await tokenChecker(data.token);
 
       toast.success("Амжилттай нэвтэрлээ!");
-      router.push("/profile");
+      router.push(`/dashboard/${user?.userId}`);
     } catch (error: any) {
       console.error("Login error:", error);
       if (error.response && error.response.data?.message) {
