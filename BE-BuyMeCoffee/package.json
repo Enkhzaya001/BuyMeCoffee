@@ -17,14 +17,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^6.11.1",
+    "@prisma/client": "^7.1.0",
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
-    "dotenv": "^17.0.1",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "nodemon": "^3.1.10",
-    "prisma": "^6.11.0",
+    "prisma": "^7.1.0",
     "qrcode": "^1.5.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
@@ -35,7 +35,7 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.10",
-    "@types/node": "^24.0.13",
+    "@types/node": "^25.0.3",
     "@types/qrcode": "^1.5.5"
   }
 }

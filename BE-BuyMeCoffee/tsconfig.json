@@ -1,14 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES2020",                   // Орчин үеийн JavaScript руу хөрвүүлнэ
-    "module": "commonjs",                 // Node.js-д тохирох module system
-    "rootDir": "src",                     //  TypeScript эх сурвалж файлууд байгаа газар
-    "outDir": "dist",                     // Хөрвүүлсний дараа .js файлууд энд очно
-    "esModuleInterop": true,              // import express from 'express' гэх мэт синтаксийг дэмжих
+    "target": "ES2020",
+    "module": "commonjs",
+    "rootDir": "src",
+    "outDir": "dist",
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,                       // Бүх strict шалгалтуудыг идэвхжүүлнэ
-    "skipLibCheck": true                  // node_modules доторх d.ts файлуудыг шалгахгүй
+    "strict": true,
+    "skipLibCheck": true,
+    "types": ["node"]
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "dist", "prisma.config.ts"]
 }
