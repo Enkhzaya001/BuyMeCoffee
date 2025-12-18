@@ -10,7 +10,7 @@ import { donationRouter } from "./routes/donation.router";
 dotenv.config();
 
 const app = express();
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({ accelerateUrl: "http://localhost:4466" });
 
 app.use(cors());
 app.use(express.json());

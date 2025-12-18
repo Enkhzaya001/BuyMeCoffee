@@ -27,6 +27,7 @@ const getDonation = async (req, res) => {
         });
         if (!getDonation) {
             res.status(404).json({ message: "User not found" });
+            console.log(getDonation);
             return;
         }
         res.status(200).json({ message: "Success", getDonation });

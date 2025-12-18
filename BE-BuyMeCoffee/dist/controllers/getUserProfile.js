@@ -6,8 +6,9 @@ const getUserPro = async (req, res) => {
     // const userId = Number(res.locals.userId);
     // console.log("Decoded userId:", userId);
     const { id } = req.params;
+    console.log("GET /getProfile дотор орж ирлээ");
     try {
-        const getUserPro = await prisma_1.prisma.profile.findUnique({
+        const getUserPro = await prisma_1.prisma.profile.findFirst({
             where: { userId: Number(id) },
         });
         if (!getUserPro) {
