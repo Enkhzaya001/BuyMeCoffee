@@ -20,7 +20,7 @@ app.use(auth_1.UserRouter);
 app.use(profile_router_1.ProfilerRouter);
 app.use(payment_router_1.paymentRouter);
 app.use(donation_router_1.donationRouter);
-const PORT = 8000;
+const PORT = process.env.SERVER_PORT || 8000;
 console.log(process.env.DATABASE_URL, "dataaa");
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

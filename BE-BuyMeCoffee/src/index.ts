@@ -1,16 +1,18 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import { PrismaClient } from "@prisma/client";
 import { UserRouter } from "./routes/auth";
 import { ProfilerRouter } from "./routes/profile.router";
 import { paymentRouter } from "./routes/payment.router";
 import { donationRouter } from "./routes/donation.router";
+import { PrismaClient } from "@prisma/client";
 
 dotenv.config();
 
 const app = express();
-const prisma = new PrismaClient({ accelerateUrl: "http://localhost:4466" });
+const prisma = new PrismaClient({
+  accelerateUrl: "prisma://aws-xxx.prisma-data.net/?api_key=XXXX",
+});
 
 app.use(cors());
 app.use(express.json());
@@ -20,7 +22,7 @@ app.use(ProfilerRouter);
 app.use(paymentRouter);
 app.use(donationRouter);
 
-const PORT = 8000;
+const PORT = process.env.SERVER_PORT || 8000;
 
 console.log(process.env.DATABASE_URL, "dataaa");
 

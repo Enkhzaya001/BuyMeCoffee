@@ -55,7 +55,7 @@ export const LoginStep = () => {
         {
           email: values.email,
           password: values.password,
-          image: "image",
+          // image: "image",
         }
       );
       const data = res.data;
