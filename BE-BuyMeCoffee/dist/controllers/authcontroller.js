@@ -7,43 +7,31 @@ exports.verify = exports.signUp = exports.login = void 0;
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv_1 = __importDefault(require("dotenv"));
-const prisma_1 = require("../utils/prisma");
+const prisma_1 = __importDefault(require("../utils/prisma"));
 dotenv_1.default.config();
 const login = async (req, res) => {
     const { email, password } = req.body;
+    console.log("LOGIN HIT");
+    console.log("BODY:", req.body);
     try {
-        const user = await prisma_1.prisma.user.findUnique({ where: { email } });
+        const { email, password } = req.body;
+        if (!email || !password) {
+            return res.status(400).json({ message: "Missing fields" });
+        }
+        const user = await prisma_1.default.user.findUnique({ where: { email } });
         if (!user) {
-            res.status(400).json({ message: "User does not exist" });
-            return;
+            return res.status(401).json({ message: "User not found" });
         }
         const isMatch = await bcryptjs_1.default.compare(password, user.password);
         if (!isMatch) {
-            res.status(400).json({ message: "Invalid password" });
-            return;
+            return res.status(401).json({ message: "Invalid password" });
         }
-        const token = jsonwebtoken_1.default.sign({
-            userId: user.id,
-            email: user.email,
-        }, process.env.JWT_SECRET
-        //   { expiresIn: "1h" }
-        );
-        res.status(200).json({
-            message: "Login successful",
-            token,
-            user: {
-                id: user.id,
-                email: user.email,
-                username: user.username,
-            },
-        });
-        return;
+        return res.json({ ok: true });
     }
     catch (err) {
-        console.error("❌ Login error:", err);
-        res.status(500).json({ error: "Login failed", details: err });
+        console.error("LOGIN ERROR:", err);
+        return res.status(500).json({ message: "Server error" });
     }
-    return;
 };
 exports.login = login;
 const signUp = async (req, res) => {
@@ -54,13 +42,13 @@ const signUp = async (req, res) => {
             res.status(400).json({ message: "All fields are required" });
             return;
         }
-        const existingUser = await prisma_1.prisma.user.findUnique({ where: { email } });
+        const existingUser = await prisma_1.default.user.findUnique({ where: { email } });
         if (existingUser) {
             res.status(400).json({ message: "Email already exists" });
             return;
         }
         const passwordHash = await bcryptjs_1.default.hash(password, 12);
-        const newUser = await prisma_1.prisma.user.create({
+        const newUser = await prisma_1.default.user.create({
             data: {
                 email,
                 username,
