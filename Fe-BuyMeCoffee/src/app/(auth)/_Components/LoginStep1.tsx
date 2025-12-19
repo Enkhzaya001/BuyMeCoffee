@@ -1,5 +1,4 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -56,6 +55,11 @@ export const LoginStep = () => {
           email: values.email,
           password: values.password,
           // image: "image",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
       const data = res.data;

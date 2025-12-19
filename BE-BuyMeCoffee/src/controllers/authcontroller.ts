@@ -8,43 +8,32 @@ dotenv.config();
 
 export const login = async (req: Request, res: Response): Promise<any> => {
   const { email, password } = req.body;
+  console.log("LOGIN HIT");
+  console.log("BODY:", req.body);
+
   try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({ message: "Missing fields" });
+    }
+
     const user = await prisma.user.findUnique({ where: { email } });
 
     if (!user) {
-      res.status(400).json({ message: "User does not exist" });
-      return;
+      return res.status(401).json({ message: "User not found" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      res.status(400).json({ message: "Invalid password" });
-      return;
+      return res.status(401).json({ message: "Invalid password" });
     }
-    const token = jwt.sign(
-      {
-        userId: user.id,
-        email: user.email,
-      },
-      process.env.JWT_SECRET as string
-      //   { expiresIn: "1h" }
-    );
 
-    res.status(200).json({
-      message: "Login successful",
-      token,
-      user: {
-        id: user.id,
-        email: user.email,
-        username: user.username,
-      },
-    });
-    return;
+    return res.json({ ok: true });
   } catch (err) {
-    console.error("❌ Login error:", err);
-    res.status(500).json({ error: "Login failed", details: err });
+    console.error("LOGIN ERROR:", err);
+    return res.status(500).json({ message: "Server error" });
   }
-  return;
 };
 
 export const signUp = async (req: Request, res: Response): Promise<void> => {
