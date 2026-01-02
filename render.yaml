@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: buymecoffee-frontend
+    env: node
+    rootDir: Fe-BuyMeCoffee
+    buildCommand: yarn install && yarn build
+    startCommand: yarn start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
