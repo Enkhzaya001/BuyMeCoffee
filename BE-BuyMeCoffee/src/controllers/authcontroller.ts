@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import prisma from "../utils/prisma";
+import { prisma } from "../utils/prisma";
 
 dotenv.config();
 
@@ -29,10 +29,35 @@ export const login = async (req: Request, res: Response): Promise<any> => {
       return res.status(401).json({ message: "Invalid password" });
     }
 
-    return res.json({ ok: true });
+    // Generate JWT token
+    const secret = process.env.JWT_SECRET;
+    if (!secret) {
+      throw new Error("JWT_SECRET is not defined in environment variables.");
+    }
+
+    const token = jwt.sign(
+      { userId: user.id, email: user.email },
+      secret,
+      { expiresIn: "7d" }
+    );
+
+    return res.json({ 
+      ok: true,
+      token,
+      user: {
+        id: user.id,
+        email: user.email,
+        username: user.username,
+      }
+    });
   } catch (err) {
     console.error("LOGIN ERROR:", err);
-    return res.status(500).json({ message: "Server error" });
+    console.error("Error details:", err instanceof Error ? err.message : String(err));
+    console.error("Error stack:", err instanceof Error ? err.stack : "No stack trace");
+    return res.status(500).json({ 
+      message: "Server error",
+      error: err instanceof Error ? err.message : String(err)
+    });
   }
 };
 

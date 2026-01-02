@@ -7,7 +7,7 @@ exports.verify = exports.signUp = exports.login = void 0;
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv_1 = __importDefault(require("dotenv"));
-const prisma_1 = __importDefault(require("../utils/prisma"));
+const prisma_1 = require("../utils/prisma");
 dotenv_1.default.config();
 const login = async (req, res) => {
     const { email, password } = req.body;
@@ -18,7 +18,7 @@ const login = async (req, res) => {
         if (!email || !password) {
             return res.status(400).json({ message: "Missing fields" });
         }
-        const user = await prisma_1.default.user.findUnique({ where: { email } });
+        const user = await prisma_1.prisma.user.findUnique({ where: { email } });
         if (!user) {
             return res.status(401).json({ message: "User not found" });
         }
@@ -26,11 +26,30 @@ const login = async (req, res) => {
         if (!isMatch) {
             return res.status(401).json({ message: "Invalid password" });
         }
-        return res.json({ ok: true });
+        // Generate JWT token
+        const secret = process.env.JWT_SECRET;
+        if (!secret) {
+            throw new Error("JWT_SECRET is not defined in environment variables.");
+        }
+        const token = jsonwebtoken_1.default.sign({ userId: user.id, email: user.email }, secret, { expiresIn: "7d" });
+        return res.json({
+            ok: true,
+            token,
+            user: {
+                id: user.id,
+                email: user.email,
+                username: user.username,
+            }
+        });
     }
     catch (err) {
         console.error("LOGIN ERROR:", err);
-        return res.status(500).json({ message: "Server error" });
+        console.error("Error details:", err instanceof Error ? err.message : String(err));
+        console.error("Error stack:", err instanceof Error ? err.stack : "No stack trace");
+        return res.status(500).json({
+            message: "Server error",
+            error: err instanceof Error ? err.message : String(err)
+        });
     }
 };
 exports.login = login;
@@ -42,13 +61,13 @@ const signUp = async (req, res) => {
             res.status(400).json({ message: "All fields are required" });
             return;
         }
-        const existingUser = await prisma_1.default.user.findUnique({ where: { email } });
+        const existingUser = await prisma_1.prisma.user.findUnique({ where: { email } });
         if (existingUser) {
             res.status(400).json({ message: "Email already exists" });
             return;
         }
         const passwordHash = await bcryptjs_1.default.hash(password, 12);
-        const newUser = await prisma_1.default.user.create({
+        const newUser = await prisma_1.prisma.user.create({
             data: {
                 email,
                 username,
